@@ -1,0 +1,11 @@
+<h1>💰 재무 현황</h1>
+<p>총 수입: {{ income }}원</p>
+<p>총 지출: {{ expense }}원</p>
+<p><strong>잔액: {{ balance }}원</strong></p>
+
+<h2>📋 거래 내역</h2>
+<ul>
+    {% for t in transactions %}
+        <li>[{{ t.date }}] {{ t.get_type_display }} - {{ t.category }}: {{ t.amount }}원 {{ t.memo }}</li>
+    {% endfor %}
+</ul>
