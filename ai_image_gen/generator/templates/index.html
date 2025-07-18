@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AI 이미지 생성기</title>
+</head>
+<body>
+    <h1>Stable Diffusion 이미지 생성기</h1>
+    <form method="post">
+        {% csrf_token %}
+        <input type="text" name="prompt" placeholder="예: 초현실적인 해변의 풍경" size="50">
+        <button type="submit">생성</button>
+    </form>
+</body>
+</html>
