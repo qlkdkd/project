@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>인적자원 관리</title>
+</head>
+<body>
+    <h1>👥 직원 목록</h1>
+    <ul>
+        {% for emp in employees %}
+            <li>
+                {{ emp.name }} - {{ emp.get_position_display }} / {{ emp.department }}
+                (입사일: {{ emp.hire_date }}, 전화: {{ emp.phone }}, 이메일: {{ emp.email }})
+            </li>
+        {% empty %}
+            <li>등록된 직원이 없습니다.</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
