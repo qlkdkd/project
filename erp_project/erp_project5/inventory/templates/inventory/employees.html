@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>직원 목록</title>
+    <meta charset="UTF-8">
+</head>
+<body>
+    <h1>👥 직원 목록</h1>
+
+    <!-- 🔍 검색/필터 폼 -->
+    <form method="get">
+        <label>부서:
+            <input type="text" name="department" value="{{ department }}">
+        </label>
+        <label>이름:
+            <input type="text" name="keyword" value="{{ keyword }}">
+        </label>
+        <button type="submit">검색</button>
+        <a href="{% url 'employee_add' %}">➕ 직원 등록</a>
+    </form>
+
+    <hr>
+
+    <!-- 📋 직원 목록 -->
+    {% if employees %}
+        <ul>
+            {% for emp in employees %}
+                <li>
+                    <a href="{% url 'employee_edit' emp.id %}">
+                        {{ emp.name }} - {{ emp.get_position_display }} / {{ emp.department }}
+                    </a>
+                    (입사일: {{ emp.hire_date }}, 전화: {{ emp.phone }}, 이메일: {{ emp.email }})
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>직원 정보가 없습니다.</p>
+    {% endif %}
+
+    <p><a href="{% url 'homepage' %}">← 메인으로</a></p>
+</body>
+</html>

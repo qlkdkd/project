@@ -1,0 +1,18 @@
+<h2>📦 입출고 이력</h2>
+
+<p><a href="{% url 'stock_transaction_add' %}">➕ 입출고 등록</a></p>
+
+<ul>
+  {% for t in transactions %}
+    <li>
+      {{ t.date }} | {{ t.get_transaction_type_display }} | 
+      {{ t.item.name }} {{ t.quantity }}개 
+      {% if t.partner %} - 거래처: {{ t.partner.name }}{% endif %}
+      {% if t.note %} - 비고: {{ t.note }}{% endif %}
+    </li>
+  {% empty %}
+    <li>입출고 이력이 없습니다.</li>
+  {% endfor %}
+</ul>
+
+<p><a href="{% url 'homepage' %}">← 메인화면으로</a></p>

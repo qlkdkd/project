@@ -1,0 +1,20 @@
+<h2>🏢 거래처 목록</h2>
+
+<form method="get">
+    <input type="text" name="keyword" placeholder="거래처명 검색" value="{{ keyword }}">
+    <button type="submit">검색</button>
+    <a href="{% url 'partner_add' %}">➕ 거래처 등록</a>
+</form>
+
+<ul>
+    {% for p in partners %}
+        <li>
+            <a href="{% url 'partner_edit' p.id %}">
+                {{ p.name }} ({{ p.get_type_display }})
+            </a>
+            - 연락처: {{ p.contact_person }}, 전화: {{ p.phone }}
+        </li>
+    {% empty %}
+        <li>등록된 거래처가 없습니다.</li>
+    {% endfor %}
+</ul>

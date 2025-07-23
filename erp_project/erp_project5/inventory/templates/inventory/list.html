@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ERP 재고관리</title>
+</head>
+<body>
+    <h1>📦 현재 재고</h1>
+    <ul>
+        {% for item in items %}
+            <li>
+                {{ item.name }}: {{ item.quantity }}개
+                <a href="{% url 'add_stock' item.id %}">[입고]</a>
+                <a href="{% url 'remove_stock' item.id %}">[출고]</a>
+            </li>
+        {% endfor %}
+    </ul>
+    <p><a href="{% url 'homepage' %}">← 메인화면으로</a></p>
+
+</body>
+</html>

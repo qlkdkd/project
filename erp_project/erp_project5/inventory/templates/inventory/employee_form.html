@@ -1,0 +1,7 @@
+<h2>{% if employee %}직원 수정{% else %}직원 등록{% endif %}</h2>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">저장</button>
+</form>
+<a href="{% url 'employee_list' %}">← 목록으로</a>

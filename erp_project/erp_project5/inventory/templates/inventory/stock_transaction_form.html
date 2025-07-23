@@ -1,0 +1,9 @@
+<h2>입출고 등록</h2>
+
+<form method="post">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button type="submit">저장</button>
+</form>
+
+<a href="{% url 'stock_transaction_list' %}">← 입출고 목록으로</a>
